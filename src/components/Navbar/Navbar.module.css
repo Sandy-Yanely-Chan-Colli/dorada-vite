@@ -1,0 +1,106 @@
+.navContainer {
+  width: 100%;
+}
+
+.nav {
+  background-color: #34495e;
+  padding: 10px 0; /* Cambiado para centrar contenido */
+  display: flex;
+  justify-content: center; /* Centra el contenido */
+  width: 100%;
+}
+
+.navContainerInner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px; /* Máximo ancho pero con espacio lateral */
+  padding: 0 30px; /* Espacio lateral */
+}
+
+/* ... resto del código igual ... */
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  margin-left: auto;
+}
+
+.navLinks li {
+  margin-left: 20px;
+}
+
+.navLinks a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.navLinks a:hover {
+  background-color: #ccd5df;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.userProfile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 0;
+  border: 2px solid #ecf0f1;
+  object-fit: cover;
+}
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logoutButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ajustes para el perfil de usuario */
+.userProfile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+@media (max-width: 600px) {
+  .navLinks {
+    display: none;
+  }
+  
+  .userProfile img {
+    width: 40px;
+    height: 40px;
+  }
+}

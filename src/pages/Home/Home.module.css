@@ -1,0 +1,40 @@
+.mainContainer {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.welcomeMessage {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.welcomeMessage h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.welcomeMessage p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+}

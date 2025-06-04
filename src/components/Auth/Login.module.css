@@ -1,0 +1,69 @@
+/* Contenedor principal con imagen de fondo */
+.loginBackground {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url('/dorada.jpg') no-repeat center center fixed;
+  background-size: cover;
+  padding: 20px;
+}
+
+/* Título */
+.pageTitle {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor del formulario */
+.loginContainer {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Resto de estilos (igual que los tuyos pero optimizados) */
+.loginTitle {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.loginContainer input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.loginContainer button {
+  padding: 12px 24px;
+  background-color: #D4AF37;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.loginContainer button:hover {
+  background-color: #C49E35;
+}
+
+.errorMessage {
+  color: #d32f2f;
+  margin-top: 1rem;
+}

@@ -1,0 +1,104 @@
+  .step {
+    margin-top: 40px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 30px;
+  }
+
+  .formList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .formField {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .formField label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .formField input,
+  .formField textarea,
+  .formField input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .formField textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .formField input:focus,
+  .formField textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+  }
+
+  .imagePreview {
+    margin-top: 15px;
+    border: 1px dashed #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .imagePreview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+  }
+
+  .formActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 20px;
+  }
+
+  .formActions button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .formActions button:first-child {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+
+  .formActions button:first-child:hover {
+    background-color: #e0e0e0;
+  }
+
+  .formActions button:last-child {
+    background-color: #d4af37;
+    color: white;
+  }
+
+  .formActions button:last-child:hover {
+    background-color: #c9aa54;
+  }
