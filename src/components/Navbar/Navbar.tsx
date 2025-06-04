@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { logout } from '../../services/authService';
 import styles from './Navbar.module.css';
 
@@ -15,11 +15,12 @@ const Navbar = () => {
       <nav className={styles.nav}>
         <div className={styles.navContainerInner}>
           <ul className={styles.navLinks}>
-            <li><a href="/">Reportes</a></li>
-            <li><a href="/reporte-albercas">Notifiaciones</a></li>
-            <li><a href="/reporte-spa">Contacto</a></li>
+            <li><Link to="/">Inicio</Link></li>
+            <li><Link to="/reporte-user-list">Reportes</Link></li>
+            <li><Link to="/reporte-albercas">Notificaciones</Link></li>
+            <li><Link to="/reporte-spa">Contacto</Link></li>
           </ul>
-          
+
           <div className={styles.userSection}>
             <div className={styles.userProfile}>
               <img src="dogy.png" alt="Perfil de usuario" />

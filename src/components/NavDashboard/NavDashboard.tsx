@@ -73,7 +73,7 @@ const NavDashboard = () => {
         <div className={styles.navEnd}>
           <div className={styles.userProfile}>
             <img
-              src="/dogy.png"
+              src="/dogyadmi.svg"
               alt="User profile"
               className={styles.userAvatar}
               width={32}

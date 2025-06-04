@@ -14,6 +14,7 @@ import { getAuthData } from './services/authService';
 import RegisterUser from './components/RegisterUser/RegisterUser';
 import ListaUsuarios from './components/ListaUsuarios/ListaUsuarios';
 import ListaReportes from './components/ListaReportes/ListaReportes';
+import UserListaReportes from './components/UserListaReportes/UserListaReportes';
 
 function App() {
   const authData = getAuthData();
@@ -42,6 +43,8 @@ function App() {
           <Route path="/reporte-gym" element={<Reportegym />} />
           <Route path="/reporte-entrada" element={<ReporteEntrada />} />
           <Route path="/reporte-canchas" element={<ReporteCanchas />} />
+          <Route path="/reporte-user-list" element={<UserListaReportes />} />
+          
         </Route>
 
         {/* Rutas protegidas solo para administradores */}
