@@ -3,12 +3,15 @@ import Login from './components/Auth/Login';
 import Home from './pages/Home/Home';
 import ReporteAlbercas from './pages/ReporteAlbercas';
 import ReporteSpa from './pages/ReporteSpa';
-import PrivateRoute from './pages/PrivateRoute';
-import { getAuthData } from './services/authService';
 import ReporteCalles from './pages/ReporteCalles';
 import Reportegym from './pages/Reportegym';
 import ReporteEntrada from './pages/ReporteEntrada';
 import ReporteCanchas from './pages/ReporteCanchas';
+import AdminDashboard from './pages/AdminDashboard';
+import PrivateRoute from './pages/PrivateRoute';
+import PrivateAdminRoute from './pages/PrivateAdminRoute';
+import { getAuthData } from './services/authService';
+import RegisterUser from './components/RegisterUser/RegisterUser';
 
 function App() {
   const authData = getAuthData();
@@ -16,11 +19,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Ruta de login */}
         <Route 
           path="/login" 
-          element={authData ? <Navigate to="/" replace /> : <Login />} 
+          element={authData ? (
+            authData.Usuario.EsAdmin 
+              ? <Navigate to="/admin/dashboard" replace /> 
+              : <Navigate to="/" replace />
+          ) : (
+            <Login />
+          )} 
         />
-        
+
+        {/* Rutas protegidas para cualquier usuario autenticado */}
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="/reporte-albercas" element={<ReporteAlbercas />} />
@@ -31,6 +42,13 @@ function App() {
           <Route path="/reporte-canchas" element={<ReporteCanchas />} />
         </Route>
 
+        {/* Rutas protegidas solo para administradores */}
+        <Route element={<PrivateAdminRoute />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/dashboard-register" element={<RegisterUser />} />
+        </Route>
+
+        {/* Redirección por defecto */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

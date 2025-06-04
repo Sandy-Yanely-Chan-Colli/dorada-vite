@@ -1,5 +1,4 @@
-// src/services/authService.ts
-import type{ 
+import type { 
   ApiAuthResponse,
   AuthResponse,
   StoredAuthData,
@@ -32,7 +31,7 @@ export const login = async (username: string, password: string): Promise<AuthRes
 
   // Normalización de Token (API) -> token (frontend)
   const authData: AuthResponse = {
-    token: rawData.Token, // Conversión a minúscula
+    token: rawData.Token,
     Usuario: {
       Id: rawData.Usuario.Id,
       NombreUsuario: rawData.Usuario.NombreUsuario,
@@ -72,9 +71,8 @@ export const getAuthData = (): StoredAuthData | null => {
   try {
     const parsed = JSON.parse(data);
     
-    // Compatibilidad con mayúsculas/minúsculas
     return {
-      token: parsed.token || parsed.Token, // Asegura compatibilidad
+      token: parsed.token || parsed.Token,
       Usuario: {
         Id: parsed.Usuario.Id,
         NombreUsuario: parsed.Usuario.NombreUsuario,
@@ -100,11 +98,41 @@ export const isAuthenticated = (): boolean => {
   return !!authData?.token;
 };
 
-// Opcional: Función para obtener headers autenticados
+// Obtener headers con token para peticiones autenticadas
 export const getAuthHeaders = (): HeadersInit => {
   const authData = getAuthData();
   return {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${authData?.token || ''}`
   };
+};
+
+// ---------------------------
+// Registro de nuevo usuario
+// ---------------------------
+export interface RegistroCompletoRequest {
+  FullName: string;
+  Rkey: string;
+  Phone: string;
+  Email: string;
+  NombreUsuario: string;
+  Contraseña: string;
+  EsAdmin: boolean;
+}
+
+export const registrarUsuario = async (datos: RegistroCompletoRequest): Promise<any> => {
+  const response = await fetch(`${API_URL}/auth/registro-completo`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(datos),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || 'Error al registrar usuario');
+  }
+
+  return await response.json();
 };

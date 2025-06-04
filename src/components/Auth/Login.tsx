@@ -11,11 +11,15 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Verificación de autenticación mejorada holis 
+  // Si ya hay sesión iniciada, redirigir automáticamente
   useEffect(() => {
     const authData = getAuthData();
     if (authData?.token) {
-      navigate(location.state?.from?.pathname || '/', { replace: true });
+      if (authData.Usuario.EsAdmin) {
+        navigate('/admin/dashboard', { replace: true });
+      } else {
+        navigate(location.state?.from?.pathname || '/', { replace: true });
+      }
     }
   }, [navigate, location]);
 
@@ -31,9 +35,14 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      await login(username, password);
-      // Redirección después de login exitoso
-      navigate(location.state?.from?.pathname || '/', { replace: true });
+      const authData = await login(username, password);
+
+      // Redirección según el rol del usuario
+      if (authData.Usuario.EsAdmin) {
+        navigate('/admin/dashboard', { replace: true });
+      } else {
+        navigate(location.state?.from?.pathname || '/', { replace: true });
+      }
     } catch (error) {
       setErrorMsg(error instanceof Error ? error.message : 'Error de autenticación');
       console.error('Login error:', error);

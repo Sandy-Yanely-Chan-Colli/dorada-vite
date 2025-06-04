@@ -1,0 +1,66 @@
+.dashboardContainer {
+  font-family: 'Work Sans', sans-serif;
+  min-height: 100vh;
+  background-color: #f4f6f8;
+}
+
+.nav {
+  background-color: #003366;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.navInner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.logoutButton {
+  background-color: #ffcc00;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #003366;
+}
+
+.logoutButton:hover {
+  background-color: #e6b800;
+}
+
+.content {
+  padding: 2rem;
+  text-align: center;
+}
