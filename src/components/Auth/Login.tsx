@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Verificación de autenticación mejorada
+  // Verificación de autenticación mejorada holis 
   useEffect(() => {
     const authData = getAuthData();
     if (authData?.token) {
