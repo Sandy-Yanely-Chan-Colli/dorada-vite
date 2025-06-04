@@ -1,8 +1,20 @@
-import { useState } from 'react';
-import { registrarUsuario, type RegistroCompletoRequest } from '../../services/authService';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { registrarUsuario, type RegistroCompletoRequest, getAuthData } from '../../services/authService';
 import styles from './RegisterUser.module.css';
+import NavDashboard from '../NavDashboard/NavDashboard';
 
 const RegisterUser = () => {
+  const navigate = useNavigate();
+  const authData = getAuthData();
+
+  // Validar que solo admin acceda
+  useEffect(() => {
+    if (!authData || !authData.Usuario.EsAdmin) {
+      navigate('/', { replace: true });
+    }
+  }, [authData, navigate]);
+
   const [form, setForm] = useState<RegistroCompletoRequest>({
     FullName: '',
     Rkey: '',
@@ -48,27 +60,30 @@ const RegisterUser = () => {
   };
 
   return (
-    <div className={styles.registerContainer}>
-      <h2>Registro de Nuevo Usuario</h2>
-      <form onSubmit={handleSubmit} className={styles.registerForm}>
-        <input type="text" name="FullName" placeholder="Nombre completo" value={form.FullName} onChange={handleChange} required className={styles.registerInput} />
-        <input type="text" name="Rkey" placeholder="Rkey" value={form.Rkey} onChange={handleChange} required className={styles.registerInput} />
-        <input type="tel" name="Phone" placeholder="Teléfono" value={form.Phone} onChange={handleChange} required className={styles.registerInput} />
-        <input type="email" name="Email" placeholder="Correo electrónico" value={form.Email} onChange={handleChange} required className={styles.registerInput} />
-        <input type="text" name="NombreUsuario" placeholder="Nombre de usuario" value={form.NombreUsuario} onChange={handleChange} required className={styles.registerInput} />
-        <input type="password" name="Contraseña" placeholder="Contraseña" value={form.Contraseña} onChange={handleChange} required className={styles.registerInput} />
-        <label className={styles.checkboxLabel}>
-          <input type="checkbox" name="EsAdmin" checked={form.EsAdmin} onChange={handleChange} />
-          ¿Es administrador?
-        </label>
-        <button type="submit" className={styles.registerButton} disabled={loading}>
-          {loading ? 'Registrando...' : 'Registrar Usuario'}
-        </button>
-      </form>
+    <>
+      <NavDashboard />
+      <div className={styles.registerContainer}>
+        <h2>Registro de Nuevo Usuario</h2>
+        <form onSubmit={handleSubmit} className={styles.registerForm}>
+          <input type="text" name="FullName" placeholder="Nombre completo" value={form.FullName} onChange={handleChange} required className={styles.registerInput} />
+          <input type="text" name="Rkey" placeholder="Rkey" value={form.Rkey} onChange={handleChange} required className={styles.registerInput} />
+          <input type="tel" name="Phone" placeholder="Teléfono" value={form.Phone} onChange={handleChange} required className={styles.registerInput} />
+          <input type="email" name="Email" placeholder="Correo electrónico" value={form.Email} onChange={handleChange} required className={styles.registerInput} />
+          <input type="text" name="NombreUsuario" placeholder="Nombre de usuario" value={form.NombreUsuario} onChange={handleChange} required className={styles.registerInput} />
+          <input type="password" name="Contraseña" placeholder="Contraseña" value={form.Contraseña} onChange={handleChange} required className={styles.registerInput} />
+          <label className={styles.checkboxLabel}>
+            <input type="checkbox" name="EsAdmin" checked={form.EsAdmin} onChange={handleChange} />
+            ¿Es administrador?
+          </label>
+          <button type="submit" className={styles.registerButton} disabled={loading}>
+            {loading ? 'Registrando...' : 'Registrar Usuario'}
+          </button>
+        </form>
 
-      {successMsg && <p className={styles.successMessage}>{successMsg}</p>}
-      {errorMsg && <p className={styles.errorMessage}>{errorMsg}</p>}
-    </div>
+        {successMsg && <p className={styles.successMessage}>{successMsg}</p>}
+        {errorMsg && <p className={styles.errorMessage}>{errorMsg}</p>}
+      </div>
+    </>
   );
 };
 

@@ -1,0 +1,143 @@
+.nav {
+  background-color: #5c5a5a; /* gris oscuro */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-bottom: 4px solid #d4af37;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.navBrand {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.brandLink {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.brandLink:hover {
+  color: #ecf0f1;
+}
+
+.navMain {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.navLink:hover {
+  color: white;
+}
+
+.dropdownToggle {
+  background: none;
+  border: none;
+  color: #d4af37;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dropdownToggle:hover {
+  color: white;
+}
+
+.arrow {
+  font-size: 14px;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 6px;
+  background-color: #3b3b3b;
+  border: 1px solid #d4af37;
+  border-radius: 6px;
+  min-width: 180px;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background-color: #2e2e2e;
+  color: white;
+}
+
+.navEnd {
+  display: flex;
+  align-items: center;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.userAvatar {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+}
+
+.logoutButton {
+  background-color: #d4af37;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: #c9aa54;
+}

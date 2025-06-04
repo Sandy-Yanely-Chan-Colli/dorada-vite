@@ -1,0 +1,124 @@
+.container {
+  padding: 2rem;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #d4af37;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.filtros {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.buscador {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.6rem 1rem;
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline-color: #caa436;
+}
+
+.mensaje {
+  text-align: center;
+  font-weight: bold;
+  color: #888;
+  margin-top: 2rem;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+.tabla thead {
+  background-color: #d4af37;
+  color: white;
+}
+
+.tabla th, .tabla td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.tabla tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.activo {
+  color: green;
+  font-weight: bold;
+}
+
+.inactivo {
+  color: red;
+  font-weight: bold;
+}
+
+.botones {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.modificar, .eliminar {
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.modificar {
+  background-color: #007bff;
+}
+
+.modificar:hover {
+  background-color: #0056b3;
+}
+
+.eliminar {
+  background-color: #dc3545;
+}
+
+.eliminar:hover {
+  background-color: #a52a2a;
+}
+
+.paginacion {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pagina {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pagina:hover {
+  background-color: #d4af37;
+  color: white;
+}
+
+.activa {
+  background-color: #d4af37;
+  color: white;
+}

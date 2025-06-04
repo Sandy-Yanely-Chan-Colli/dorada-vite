@@ -12,6 +12,8 @@ import PrivateRoute from './pages/PrivateRoute';
 import PrivateAdminRoute from './pages/PrivateAdminRoute';
 import { getAuthData } from './services/authService';
 import RegisterUser from './components/RegisterUser/RegisterUser';
+import ListaUsuarios from './components/ListaUsuarios/ListaUsuarios';
+import ListaReportes from './components/ListaReportes/ListaReportes';
 
 function App() {
   const authData = getAuthData();
@@ -46,6 +48,8 @@ function App() {
         <Route element={<PrivateAdminRoute />}>
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/dashboard-register" element={<RegisterUser />} />
+            <Route path="/admin/dashboard-lista-usuarios" element={<ListaUsuarios/>} />
+            <Route path="/admin/dashboard-lista-reportes" element={<ListaReportes/>} />
         </Route>
 
         {/* Redirección por defecto */}
