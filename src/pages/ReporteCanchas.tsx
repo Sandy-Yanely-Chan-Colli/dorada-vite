@@ -53,7 +53,7 @@ export default function ReporteCanchas() {
     setReportData(prev => ({ ...prev, ...data }));
     setCurrentStep(3);
   };
-
+//Datas
   const handleReportDetailsSubmit = (data: Pick<ReportDataType, 'title' | 'description' | 'area' | 'date' | 'imageUrl'>) => {
     setReportData(prev => ({ ...prev, ...data }));
   };

@@ -38,18 +38,22 @@ export default function ReporteSpa() {
   const [currentStep, setCurrentStep] = useState(1);
   const [reportData, setReportData] = useState<ReportDataType>({});
 
-  const handleServiceSelect = (serviceType: string) => {
+ const handleServiceSelect = (serviceType: string) => {
     setReportData(prev => ({ ...prev, serviceType }));
   };
 
-  const handlePersonalDataSubmit = (data: Omit<ReportDataType, 'serviceType'>) => {
+  const handlePersonalDataSubmit = (data: {
+    fullName: string;
+    rkey: string;
+    email?: string;
+    phone?: string;
+  }) => {
     setReportData(prev => ({ ...prev, ...data }));
     setCurrentStep(3);
   };
 
   const handleReportDetailsSubmit = (data: Pick<ReportDataType, 'title' | 'description' | 'area' | 'date' | 'imageUrl'>) => {
     setReportData(prev => ({ ...prev, ...data }));
-    setCurrentStep(4);
   };
 
   const restartForm = () => {
@@ -80,24 +84,28 @@ export default function ReporteSpa() {
             className={styles.serviceSelection}
           />
         )}
-
-        {currentStep === 2 && (
-          <PersonalDataForm 
-            onSubmit={handlePersonalDataSubmit}
-            onBack={() => setCurrentStep(1)}
-            initialData={reportData}
-          />
-        )}
-
-        {currentStep === 3 && (
-          <ReportDetailsForm 
-            onSubmit={handleReportDetailsSubmit}
-            onBack={() => setCurrentStep(2)}
-            serviceType={reportData.serviceType || ''}
-            initialData={reportData}
-          />
-        )}
-
+               {currentStep === 2 && (
+                 <PersonalDataForm 
+                   onNext={handlePersonalDataSubmit}
+                   onBack={() => setCurrentStep(1)}
+                   initialData={{
+                     fullName: reportData.fullName,
+                     rkey: reportData.rkey,
+                     email: reportData.email,
+                     phone: reportData.phone
+                   }}
+                 />
+               )}
+       
+               {currentStep === 3 && (
+                 <ReportDetailsForm 
+                   onSubmit={handleReportDetailsSubmit}
+                   onBack={() => setCurrentStep(2)}
+                   serviceType={reportData.serviceType || ''}
+                   initialData={reportData}
+                   onSuccess={() => setCurrentStep(4)} // Redirige al paso 4 cuando se envía correctamente
+                 />
+               )}
         {currentStep === 4 && (
           <ReportConfirmation 
             reportData={reportData}

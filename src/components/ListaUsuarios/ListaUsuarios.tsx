@@ -1,7 +1,7 @@
-// src/components/ListaUsuarios.tsx
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Usuarios.module.css';
-import { getAuthHeaders } from '../../services/authService';
+import { getAuthHeaders, getAuthData } from '../../services/authService';
 import NavDashboard from '../NavDashboard/NavDashboard';
 
 interface Usuario {
@@ -22,8 +22,16 @@ export default function ListaUsuarios() {
   const [busqueda, setBusqueda] = useState<string>('');
   const [filtrados, setFiltrados] = useState<Usuario[]>([]);
   const [paginaActual, setPaginaActual] = useState<number>(1);
+  const navigate = useNavigate();
+  const authData = getAuthData();
 
   useEffect(() => {
+    // Protege la ruta si no está autenticado o no es admin
+    if (!authData || !authData.Usuario?.EsAdmin) {
+      navigate('/login', { replace: true });
+      return;
+    }
+
     const obtenerUsuarios = async () => {
       try {
         const res = await fetch('https://localhost:7200/api/Auth/usuarios', {
@@ -40,7 +48,7 @@ export default function ListaUsuarios() {
     };
 
     obtenerUsuarios();
-  }, []);
+  }, [authData, navigate]);
 
   useEffect(() => {
     const texto = busqueda.toLowerCase();

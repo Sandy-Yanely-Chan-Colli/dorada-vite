@@ -115,6 +115,7 @@ export default function PersonalDataForm({ onNext, onBack, initialData }: Person
             <label>Email</label>
             <div className={styles.userData}>{userData.Email || 'No especificado'}</div>
           </div>
+          
         </div>
 
         {(onBack || onNext) && (
