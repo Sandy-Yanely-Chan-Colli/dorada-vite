@@ -5,7 +5,7 @@ import type {
   UserData 
 } from '../types/authTypes';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://localhost:7200/api';
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 /**
  * Servicio de autenticación
