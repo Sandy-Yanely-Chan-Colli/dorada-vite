@@ -34,7 +34,7 @@ export default function PersonalDataForm({ onNext, onBack, initialData }: Person
       }
 
       try {
-        const response = await fetch(`https://localhost:7200/api/Usuarios/${auth.Usuario.Id}`, {
+        const response = await fetch(`https://localhost:/api/Usuarios/${auth.Usuario.Id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
